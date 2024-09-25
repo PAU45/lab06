@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Detalle de Factura {{ factura.numero }}</title>
+   <style>
+   
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #e40000; /* Color del encabezado */
+        }
+
+        h2 {
+            color: #333; /* Color del subtítulo */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background-color: white; /* Color de fondo de la tabla */
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 12px;
+            text-align: left;
+            transition: background-color 0.3s; /* Transición suave para el hover */
+        }
+
+        th {
+            background-color: #e40000; /* Color de fondo para la cabecera */
+            color: white; /* Color del texto en la cabecera */
+        }
+
+        th:hover, td:hover {
+            background-color: #f2f2f2; /* Color de fondo al pasar el mouse */
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9; /* Color de fila par */
+        }
+
+        p {
+            font-size: 16px;
+            color: #333; /* Color del texto */
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #e40000; /* Color del botón */
+            color: white; /* Color del texto del botón */
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s; /* Transición suave para el hover */
+        }
+
+        a:hover {
+            background-color: #b30000; /* Color del botón al pasar el mouse */
+        }
+ 
+</style>
+</head>
+<body>
+    <h1>Detalle de Factura {{ factura.numero }}</h1>
+    <p><strong>Cliente:</strong> {{ factura.cliente }}</p>
+    <p><strong>Empleado:</strong> {{ factura.empleado }}</p>
+    <p><strong>Fecha:</strong> {{ factura.fecha }}</p>
+
+    <h2>Detalles</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
+                <th>IGV</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for detalle in detalles %}
+            <tr>
+                <td>{{ detalle.producto.descripcion }}</td>
+                <td>{{ detalle.cantidad }}</td>
+                <td>{{ detalle.subtotal|floatformat:2 }}</td>
+                <td>{{ detalle.igv|floatformat:2 }}</td>
+                <td><strong></strong>{{ total_general|floatformat:2 }}</td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p><strong>Total General: </strong>{{ total_general|floatformat:2 }} soles</p>
+
+
+    <a href="{% url 'factura_pdf' factura.numero %}">Descargar PDF</a>
+    <a href="{% url 'crear_factura' %}">Crear nueva factura</a>
+</body>
+</html>

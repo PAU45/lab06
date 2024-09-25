@@ -22,7 +22,7 @@ class ProductoAdmin(admin.ModelAdmin):
     search_fields = ('descripcion',)
 
 class FacturaAdmin(admin.ModelAdmin):
-    list_display = ('numero', 'cliente', 'empleado', 'fecha', 'cantidad')
+    list_display = ('numero', 'cliente', 'empleado', 'fecha')
     search_fields = ('numero',)
     list_filter = ('fecha',)
 
