@@ -30,7 +30,8 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
+INSTALLED_APPS = [ 
+    'sistema_de_factiras',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
