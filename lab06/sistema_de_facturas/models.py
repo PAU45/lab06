@@ -33,22 +33,21 @@ class Producto(models.Model):
         return self.descripcion
 
 class Factura(models.Model):
-    numero = models.CharField(max_length=8, unique=True)
+    numero = models.CharField(max_length=8, unique=True) #autoincrement
     cliente = models.ForeignKey(Cliente, on_delete=models.PROTECT)  # Cambiado a PROTECT
     empleado = models.ForeignKey(Empleado, on_delete=models.PROTECT)  # Cambiado a PROTECT
     fecha = models.DateField()
     subtotal = models.DecimalField(max_digits=10, decimal_places=2)
     igv = models.DecimalField(max_digits=10, decimal_places=2)
     total = models.DecimalField(max_digits=10, decimal_places=2)
+    producto = models.ForeignKey(Producto, on_delete=models.PROTECT)  # Cambiado a PROTECT
+    cantidad = models.PositiveIntegerField()
 
     def __str__(self):
         return f'Factura {self.numero}'
 
 class DetalleFactura(models.Model):
     factura = models.ForeignKey(Factura, related_name='detalles', on_delete=models.CASCADE)
-    producto = models.ForeignKey(Producto, on_delete=models.PROTECT)  # Cambiado a PROTECT
-    cantidad = models.PositiveIntegerField()
-    valor_venta = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
         return f'{self.cantidad} x {self.producto.descripcion}'
