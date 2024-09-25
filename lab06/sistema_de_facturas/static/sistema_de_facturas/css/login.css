@@ -3,7 +3,7 @@
 /* Estilos generales */
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #74ebd5 0%, #9face6 100%);
+    background: linear-gradient(135deg, #00ff15 0%, #ffffff 100%);
     margin: 0;
     padding: 0;
     display: flex;
@@ -68,7 +68,7 @@ button {
 }
 
 button:hover {
-    background-color: #4cae4c; /* Verde más oscuro */
+    background-color: #01a101; /* Verde más oscuro */
     transform: translateY(-2px);
 }
 

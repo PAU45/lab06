@@ -1,10 +1,9 @@
 from django.urls import path
-from . import views
+from .views import login_view
+from .views import admin_panel_view
 
-# sistema_de_facturas/urls.py
-from django.urls import path
-from .views import login_view  # Importa la vista directamente
 
 urlpatterns = [
-    path('login/', login_view, name='login'),  # Ruta para el inicio de sesión
+    path('login/', login_view, name='login'),
+    path('admin-panel/', admin_panel_view, name='admin_panel'),  # Asegúrate de definir esta vista
 ]
