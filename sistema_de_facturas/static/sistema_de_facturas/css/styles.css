@@ -1,0 +1,18 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+thead {
+    background-color: #e40000; /* Color de fondo para la cabecera */
+    
+    background-image: url('lab06\sistema_de_facturas\static\sistema_de_facturas\img\fondo.png');
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+  
+}
