@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'trabajo/css/login.css' %}">
+    
+    <title>Inicio de Sesión</title>
+    <link >
+    
+</head>
+<body>
+    <div class="border">
+    <div class="login-container">
+        <h2>Iniciar Sesión</h2>
+        <div class="error"></div>
+        <form method="post"  class="form">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Nombre de Usuario:</label>
+                <input type="text" name="username" id="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Contraseña:</label>
+                <input type="password" name="password" id="password" required>
+            </div>
+            <button type="submit">Iniciar Sesión</button>
+        </form>
+       
+    </div>
+</div>
+</body>
+</html>
